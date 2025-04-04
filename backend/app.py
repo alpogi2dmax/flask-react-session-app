@@ -5,7 +5,11 @@ from auth import auth_bp, User
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # Use env vars in production
-CORS(app, supports_credentials=True)
+app.config.update(
+    SESSION_COOKIE_SAMESITE='None',
+    SESSION_COOKIE_SECURE=True  # required for cross-origin cookies
+)
+CORS(app, supports_credentials=True, origins=["http://localhost:3000/"])
 
 # Session-based login manager
 login_manager = LoginManager()
