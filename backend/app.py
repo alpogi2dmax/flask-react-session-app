@@ -9,7 +9,7 @@ app.config.update(
     SESSION_COOKIE_SAMESITE='None',
     SESSION_COOKIE_SECURE=True  # required for cross-origin cookies
 )
-CORS(app, supports_credentials=True, origins=["http://localhost:3000/"])
+CORS(app, supports_credentials=True)
 
 # Session-based login manager
 login_manager = LoginManager()
